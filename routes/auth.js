@@ -35,7 +35,7 @@ router.post('/login', async function (req, res, next) {
     if (result) {
       let token = jwt.sign({
         _id: user._id,
-        exp: Date.now() + 15 * 60 * 1000
+        exp: Date.now() + 150 * 60 * 1000
       }, "NNPTUD");
       res.cookie("token", "Bearer " + token, {
         httpOnly: true,
@@ -82,7 +82,7 @@ router.post('/forgotpassword', validatorForgotPassword, async function (req, res
   if (user.length > 0) {
     user = user[0];
     user.forgotPasswordToken = GenerateRandomString(64);
-    user.forgotPasswordTokenExp = new Date(Date.now() + 10 * 60 * 1000);
+    user.forgotPasswordTokenExp = new Date(Date.now() + 1000 * 60 * 1000);
     await user.save();
     let URL = "http://localhost:3000/auth/resetpassword/" + user.forgotPasswordToken;
     await sendMail(URL,user)

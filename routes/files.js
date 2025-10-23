@@ -31,8 +31,7 @@ router.post("/uploads", uploadAFileWithField('image'), async function (req, res,
     fs.unlinkSync(req.file.path);
     //console.log(result);
     //let URL = `${req.protocol}://${req.get('host')}/files/${req.file.filename}`
-    Response(res, 200, true, result.data)
-
+    Response(res, 200, true, result.data);
 })
 router.post("/uploadMulti", uploadMultiFilesWithField('image'), function (req, res, next) {
     let URLs = req.files.map(function (file) {

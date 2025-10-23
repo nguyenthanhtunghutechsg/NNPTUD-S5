@@ -32,7 +32,8 @@ app.use('/users', usersRouter);
 app.use('/roles', require('./routes/roles'));
 app.use('/auth', require('./routes/auth'));
 app.use('/files', require('./routes/files'));
-
+app.use('/messages', require('./routes/messages'));
+app.use('/chat', require('./routes/chat'));
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
